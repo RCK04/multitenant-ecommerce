@@ -14,7 +14,7 @@ function Progress({ className, value, ...props }: React.ComponentProps<typeof Pr
     >
       <ProgressPrimitive.Indicator
         data-slot="progress-indicator"
-        className="bg-gradient-to-r from-primary to-accent h-full w-full flex-1 transition-all duration-500 ease-out"
+        className="bg-linear-to-r from-primary to-accent h-full w-full flex-1 transition-all duration-500 ease-out"
         style={{ transform: `translateX(-${100 - (value || 0)}%)` }}
       />
     </ProgressPrimitive.Root>

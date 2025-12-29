@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useState } from "react";
 import { MenuIcon } from "lucide-react";
 import Link from "next/link";
 import { Poppins } from "next/font/google";
@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 import { NavbarSidebar } from "./navbar-sidebar";
+import { navigationItems } from "../constants/navigation";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -18,11 +19,11 @@ const poppins = Poppins({
 
 interface NavbarItemProps {
   href: string;
-  children: ReactNode;
+  label: string;
   isActive?: boolean;
 }
 
-const NavbarItem = ({ href, children, isActive }: NavbarItemProps) => {
+const NavbarItem = ({ href, label, isActive }: NavbarItemProps) => {
   return (
     <Link
       href={href}
@@ -33,18 +34,10 @@ const NavbarItem = ({ href, children, isActive }: NavbarItemProps) => {
           : "text-muted-foreground hover:text-foreground hover:bg-secondary/50"
       )}
     >
-      {children}
+      {label}
     </Link>
   );
 };
-
-const navbarItems = [
-  { href: "/", children: "Home" },
-  { href: "/about", children: "About" },
-  { href: "/features", children: "Features" },
-  { href: "/pricing", children: "Pricing" },
-  { href: "/contact", children: "Contact" },
-];
 
 export const Navbar = () => {
   const pathname = usePathname();
@@ -72,21 +65,20 @@ export const Navbar = () => {
             </span>
           </Link>
 
-          <NavbarSidebar 
-            items={navbarItems}
+          <NavbarSidebar
+            items={navigationItems}
             open={isSidebarOpen}
             onOpenChange={setIsSidebarOpen}
           />
 
           <nav className="hidden md:flex items-center gap-1">
-            {navbarItems.map((item) => (
+            {navigationItems.map((item) => (
               <NavbarItem
                 key={item.href}
                 href={item.href}
+                label={item.label}
                 isActive={pathname === item.href}
-              >
-                {item.children}
-              </NavbarItem>
+              ></NavbarItem>
             ))}
           </nav>
         </div>
@@ -101,9 +93,9 @@ export const Navbar = () => {
         </div>
 
         <div className="flex md:hidden items-center justify-center">
-          <Button 
+          <Button
             variant="ghost"
-            className="size-2"
+            className="size-10"
             onClick={() => setIsSidebarOpen(true)}
           >
             <MenuIcon />

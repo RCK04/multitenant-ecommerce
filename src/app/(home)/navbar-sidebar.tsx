@@ -1,4 +1,3 @@
-import { ReactNode } from "react";
 import Link from "next/link";
 
 import {
@@ -8,14 +7,10 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { ScrollArea } from "@/components/ui/scroll-area";
-
-interface NavbarItem {
-  href: string;
-  children: ReactNode;
-}
+import { NavigationItem } from "../constants/navigation";
 
 interface NavbarProps {
-  items: NavbarItem[];
+  items: NavigationItem[];
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }
@@ -36,7 +31,7 @@ export const NavbarSidebar = ({ items, open, onOpenChange }: NavbarProps) => {
               className="w-full p-3 hover:bg-black hover:text-white flex items-center text-base font-medium"
               onClick={() => onOpenChange(false)}
             >
-              {item.children}
+              {item.label}
             </Link>
           ))}
 
