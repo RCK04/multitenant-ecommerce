@@ -78,7 +78,7 @@ export const Navbar = () => {
                 href={item.href}
                 label={item.label}
                 isActive={pathname === item.href}
-              ></NavbarItem>
+              />
             ))}
           </nav>
         </div>
@@ -96,6 +96,7 @@ export const Navbar = () => {
           <Button
             variant="ghost"
             className="size-10"
+            aria-label="Open navigation menu"
             onClick={() => setIsSidebarOpen(true)}
           >
             <MenuIcon />
