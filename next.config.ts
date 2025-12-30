@@ -6,4 +6,4 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
 };
 
-export default withPayload(withPayload(nextConfig));
+export default withPayload(nextConfig);
