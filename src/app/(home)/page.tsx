@@ -1,8 +1,16 @@
+import { Metadata } from "next";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
+
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Sellix helps creators and businesses build, manage, and scale their online stores.",
+};
 
 export default function Home() {
   return (
@@ -25,7 +33,7 @@ export default function Home() {
         </div>
 
         <div>
-          <Checkbox  />
+          <Checkbox />
         </div>
       </div>
     </div>
